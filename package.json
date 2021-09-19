@@ -27,6 +27,7 @@
     "node-telegram-bot-api": "^0.54.0",
     "pg": "^8.7.1",
     "sequelize": "^6.6.5",
+    "slugify": "^1.6.0",
     "ytdl-core": "^4.9.1"
   }
 }

@@ -1,3 +1,6 @@
+const slugify = require("slugify");
+// {remove: /[*+~.()'"!:@,;><`~]/g}
+
 module.exports = class Model {
     static async categories(Sequelize, sequelize) {
         return sequelize.define("categories", {
@@ -8,6 +11,10 @@ module.exports = class Model {
             },
             category_name: {
                 type: Sequelize.DataTypes.TEXT,
+                allowNull: false,
+            },
+            slug: {
+                type: Sequelize.DataTypes.STRING,
                 allowNull: false,
             },
         });
@@ -25,7 +32,10 @@ module.exports = class Model {
                 type: Sequelize.DataTypes.STRING(256),
                 allowNull: true,
             },
-
+            slug: {
+                type: Sequelize.DataTypes.STRING,
+                allowNull: false,
+            },
             caption: {
                 type: Sequelize.DataTypes.TEXT,
                 allowNull: false,

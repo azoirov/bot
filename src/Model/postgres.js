@@ -46,10 +46,5 @@ module.exports = async () => {
 
     await sequelize.sync({ force: false });
 
-    await db.categories.create({
-        category_name: "Og'abek Sultonbayev",
-        category_id: "2d558de8-0e98-4074-ad6b-8c1ee4fe224c",
-    });
-
     return db;
 };
