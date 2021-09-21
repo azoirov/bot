@@ -10,7 +10,7 @@ async function server() {
 
     // Create Server
     const app = Express();
-    app.listen(config.PORT);
+    app.listen(config.PORT, () => console.log("SERVER READY"));
 
     // Middlewares
     app.use(Express.urlencoded({ extended: true }));

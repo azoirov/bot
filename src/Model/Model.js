@@ -27,10 +27,13 @@ module.exports = class Model {
                 primaryKey: true,
                 defaultValue: Sequelize.DataTypes.UUIDV4(),
             },
-
             file_id: {
                 type: Sequelize.DataTypes.STRING(256),
                 allowNull: true,
+            },
+            name: {
+                type: Sequelize.DataTypes.STRING(256),
+                allowNull: false,
             },
             slug: {
                 type: Sequelize.DataTypes.STRING,

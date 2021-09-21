@@ -323,7 +323,13 @@
                                 text-muted
                             "
                         >
-                            <span>Main Categories</span>
+                            <span>
+                                <%= lessons.length ? "Lessons of" : "Categories"
+                                + " " + "of" %>
+                                <strong
+                                    ><%= category.category_name %></strong
+                                ></span
+                            >
 
                             <a
                                 style="cursor: cell"
@@ -352,15 +358,50 @@
                             </a>
                         </h6>
                         <ul class="nav flex-column mb-2">
-                            <% categories.forEach(category => { %>
+                            <% if(lessons.length === 0) {
+                            categories.forEach(category => { %>
                             <li class="nav-item d-flex align-items-center">
                                 <a
                                     class="nav-link text-dark"
                                     href="<%=category.id %>"
                                 >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="feather feather-file-text"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                        ></path>
+                                        <polyline
+                                            points="14 2 14 8 20 8"
+                                        ></polyline>
+                                        <line
+                                            x1="16"
+                                            y1="13"
+                                            x2="8"
+                                            y2="13"
+                                        ></line>
+                                        <line
+                                            x1="16"
+                                            y1="17"
+                                            x2="8"
+                                            y2="17"
+                                        ></line>
+                                        <polyline
+                                            points="10 9 9 9 8 9"
+                                        ></polyline>
+                                    </svg>
                                     <%= category.category_name %>
                                 </a>
-
                                 <a href="/delete-cat/<%= category.id %>"
                                     ><svg
                                         fill="#000000"
@@ -374,221 +415,198 @@
                                         /></svg
                                 ></a>
                             </li>
-                            <% }) %>
+                            <% }) } else { lessons.forEach(lesson => { %>
+                            <li class="nav-item d-flex align-items-center">
+                                <a
+                                    class="nav-link text-dark"
+                                    href="<%=lesson.id %>"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="feather feather-file-text"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
+                                        ></path>
+                                        <polyline
+                                            points="14 2 14 8 20 8"
+                                        ></polyline>
+                                        <line
+                                            x1="16"
+                                            y1="13"
+                                            x2="8"
+                                            y2="13"
+                                        ></line>
+                                        <line
+                                            x1="16"
+                                            y1="17"
+                                            x2="8"
+                                            y2="17"
+                                        ></line>
+                                        <polyline
+                                            points="10 9 9 9 8 9"
+                                        ></polyline>
+                                    </svg>
+                                    <%= lesson.name %>
+                                </a>
+                                <a href="/delete-lesson/<%= category.id %>"
+                                    ><svg
+                                        fill="#000000"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        width="24px"
+                                        height="24px"
+                                    >
+                                        <path
+                                            d="M 10 2 L 9 3 L 4 3 L 4 5 L 5 5 L 5 20 C 5 20.522222 5.1913289 21.05461 5.5683594 21.431641 C 5.9453899 21.808671 6.4777778 22 7 22 L 17 22 C 17.522222 22 18.05461 21.808671 18.431641 21.431641 C 18.808671 21.05461 19 20.522222 19 20 L 19 5 L 20 5 L 20 3 L 15 3 L 14 2 L 10 2 z M 7 5 L 17 5 L 17 20 L 7 20 L 7 5 z M 9 7 L 9 18 L 11 18 L 11 7 L 9 7 z M 13 7 L 13 18 L 15 18 L 15 7 L 13 7 z"
+                                        /></svg
+                                ></a>
+                            </li>
+                            <% }) } %>
                         </ul>
                     </div>
                 </nav>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div class="chartjs-size-monitor">
-                        <div class="chartjs-size-monitor-expand">
-                            <div class=""></div>
-                        </div>
-                        <div class="chartjs-size-monitor-shrink">
-                            <div class=""></div>
-                        </div>
-                    </div>
-                    <div
-                        class="
-                            d-flex
-                            justify-content-between
-                            flex-wrap flex-md-nowrap
-                            align-items-center
-                            pt-3
-                            pb-2
-                            mb-3
-                            border-bottom
-                        "
-                    >
-                        <h1 class="h2">Dashboard</h1>
-                        <div class="btn-toolbar mb-2 mb-md-0">
-                            <div class="btn-group me-2">
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-outline-secondary"
-                                >
-                                    Share
-                                </button>
-                                <button
-                                    type="button"
-                                    class="btn btn-sm btn-outline-secondary"
-                                >
-                                    Export
-                                </button>
+                    <br />
+                    <div>
+                        <% if(lessons.length === 0 && categories.length === 0 )
+                        { %>
+                        <h2>Create Lesson</h2>
+                        <br />
+                        <form class="form-floating" id="lessonForm">
+                            <div class="form-floating">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="lessonName"
+                                    placeholder="Ex: Web Dasturlash"
+                                />
+                                <label for="lessonName">Lesson Name</label>
+                            </div>
+                            <br />
+                            <div class="form-floating">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="fileId"
+                                    placeholder="Ex: Web Dasturlash"
+                                />
+                                <label for="fileId">File Id</label>
+                            </div>
+                            <br />
+                            <div class="form-floating">
+                                <textarea
+                                    class="form-control"
+                                    placeholder="Leave a comment here"
+                                    id="floatingTextarea"
+                                ></textarea>
+                                <label for="floatingTextarea">Caption</label>
                             </div>
                             <button
-                                type="button"
-                                class="
-                                    btn btn-sm btn-outline-secondary
-                                    dropdown-toggle
-                                "
+                                data-category-id="<%=category.id %>"
+                                class="btn btn-primary w-100 mt-3"
+                                type="submit"
+                                id="lessonBtn"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="feather feather-calendar"
-                                    aria-hidden="true"
-                                >
-                                    <rect
-                                        x="3"
-                                        y="4"
-                                        width="18"
-                                        height="18"
-                                        rx="2"
-                                        ry="2"
-                                    ></rect>
-                                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                                </svg>
-                                This week
+                                Submit
                             </button>
-                        </div>
+                        </form>
+                        <br />
+                        <hr />
+                        <br />
+                        <h2 class="">Create Sub Category</h2>
+                        <br />
+                        <form class="form-floating" id="subCategoryForm">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="categoryName"
+                                placeholder="Ex: Web Dasturlash"
+                            />
+                            <label for="categoryName">Category Name</label>
+                            <button
+                                data-category-id="<%=category.id %>"
+                                class="btn btn-primary w-100 mt-3"
+                                type="submit"
+                                id="categoryBtn"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                        <% } else if(lessons && categories.length === 0) { %>
+                        <h2>Create Lesson</h2>
+                        <br />
+                        <form class="form-floating" id="lessonForm">
+                            <div class="form-floating">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="lessonName"
+                                    placeholder="Ex: Web Dasturlash"
+                                />
+                                <label for="lessonName">Lesson Name</label>
+                            </div>
+                            <br />
+                            <div class="form-floating">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="fileId"
+                                    placeholder="Ex: Web Dasturlash"
+                                />
+                                <label for="fileId">File Id</label>
+                            </div>
+                            <br />
+                            <div class="form-floating">
+                                <textarea
+                                    class="form-control"
+                                    placeholder="Leave a comment here"
+                                    id="floatingTextarea"
+                                ></textarea>
+                                <label for="floatingTextarea">Caption</label>
+                            </div>
+                            <button
+                                data-category-id="<%=category.id %>"
+                                class="btn btn-primary w-100 mt-3"
+                                type="submit"
+                                id="lessonBtn"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                        <% } else { %>
+                        <h2 class="">Create Sub Category</h2>
+                        <br />
+                        <form class="form-floating" id="subCategoryForm">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="categoryName"
+                                placeholder="Ex: Web Dasturlash"
+                            />
+                            <label for="categoryName">Category Name</label>
+                            <button
+                                data-category-id="<%=category.id %>"
+                                class="btn btn-primary w-100 mt-3"
+                                type="submit"
+                                id="categoryBtn"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                        <% } %>
                     </div>
-
-                    <canvas
-                        class="my-4 w-100 chartjs-render-monitor"
-                        id="myChart"
-                        width="942"
-                        height="397"
-                        style="display: block; width: 942px; height: 397px"
-                    ></canvas>
-
-                    <h2>Section title</h2>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-sm">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Header</th>
-                                    <th scope="col">Header</th>
-                                    <th scope="col">Header</th>
-                                    <th scope="col">Header</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1,001</td>
-                                    <td>random</td>
-                                    <td>data</td>
-                                    <td>placeholder</td>
-                                    <td>text</td>
-                                </tr>
-                                <tr>
-                                    <td>1,002</td>
-                                    <td>placeholder</td>
-                                    <td>irrelevant</td>
-                                    <td>visual</td>
-                                    <td>layout</td>
-                                </tr>
-                                <tr>
-                                    <td>1,003</td>
-                                    <td>data</td>
-                                    <td>rich</td>
-                                    <td>dashboard</td>
-                                    <td>tabular</td>
-                                </tr>
-                                <tr>
-                                    <td>1,003</td>
-                                    <td>information</td>
-                                    <td>placeholder</td>
-                                    <td>illustrative</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,004</td>
-                                    <td>text</td>
-                                    <td>random</td>
-                                    <td>layout</td>
-                                    <td>dashboard</td>
-                                </tr>
-                                <tr>
-                                    <td>1,005</td>
-                                    <td>dashboard</td>
-                                    <td>irrelevant</td>
-                                    <td>text</td>
-                                    <td>placeholder</td>
-                                </tr>
-                                <tr>
-                                    <td>1,006</td>
-                                    <td>dashboard</td>
-                                    <td>illustrative</td>
-                                    <td>rich</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,007</td>
-                                    <td>placeholder</td>
-                                    <td>tabular</td>
-                                    <td>information</td>
-                                    <td>irrelevant</td>
-                                </tr>
-                                <tr>
-                                    <td>1,008</td>
-                                    <td>random</td>
-                                    <td>data</td>
-                                    <td>placeholder</td>
-                                    <td>text</td>
-                                </tr>
-                                <tr>
-                                    <td>1,009</td>
-                                    <td>placeholder</td>
-                                    <td>irrelevant</td>
-                                    <td>visual</td>
-                                    <td>layout</td>
-                                </tr>
-                                <tr>
-                                    <td>1,010</td>
-                                    <td>data</td>
-                                    <td>rich</td>
-                                    <td>dashboard</td>
-                                    <td>tabular</td>
-                                </tr>
-                                <tr>
-                                    <td>1,011</td>
-                                    <td>information</td>
-                                    <td>placeholder</td>
-                                    <td>illustrative</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,012</td>
-                                    <td>text</td>
-                                    <td>placeholder</td>
-                                    <td>layout</td>
-                                    <td>dashboard</td>
-                                </tr>
-                                <tr>
-                                    <td>1,013</td>
-                                    <td>dashboard</td>
-                                    <td>irrelevant</td>
-                                    <td>text</td>
-                                    <td>visual</td>
-                                </tr>
-                                <tr>
-                                    <td>1,014</td>
-                                    <td>dashboard</td>
-                                    <td>illustrative</td>
-                                    <td>rich</td>
-                                    <td>data</td>
-                                </tr>
-                                <tr>
-                                    <td>1,015</td>
-                                    <td>random</td>
-                                    <td>tabular</td>
-                                    <td>information</td>
-                                    <td>text</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div></div>
                 </main>
             </div>
         </div>
@@ -663,8 +681,6 @@
             </div>
         </div>
 
-        <script src="/js/addMainCategory.js"></script>
-
-        <script src="/js/dashboard.js"></script>
+        <script src="/js/categoryActions.js"></script>
     </body>
 </html>
