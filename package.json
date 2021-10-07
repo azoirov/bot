@@ -1,33 +1,32 @@
 {
-  "name": "bot",
-  "version": "1.0.0",
-  "description": "��#\u0000 \u0000b\u0000o\u0000t\u0000\r\u0000 \u0000",
-  "main": "index.js",
-  "scripts": {
-    "start": "pm2 ./main.js --name bot",
-    "dev": "nodemon ./main.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/azoirov/bot.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/azoirov/bot/issues"
-  },
-  "homepage": "https://github.com/azoirov/bot#readme",
-  "dependencies": {
-    "cookie-parser": "^1.4.5",
-    "dotenv": "^10.0.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "node-telegram-bot-api": "^0.54.0",
-    "pg": "^8.7.1",
-    "sequelize": "^6.6.5",
-    "slugify": "^1.6.0",
-    "ytdl-core": "^4.9.1"
-  }
+    "name": "bot",
+    "version": "1.0.0",
+    "description": "��#\u0000 \u0000b\u0000o\u0000t\u0000\r\u0000 \u0000",
+    "main": "index.js",
+    "scripts": {
+        "start": "pm2 ./src/Admin/server.js --name bot",
+        "dev": "nodemon ./src/Admin/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/azoirov/bot.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/azoirov/bot/issues"
+    },
+    "homepage": "https://github.com/azoirov/bot#readme",
+    "dependencies": {
+        "cookie-parser": "^1.4.5",
+        "dotenv": "^10.0.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "node-telegram-bot-api": "^0.54.0",
+        "pg": "^8.7.1",
+        "sequelize": "^6.6.5",
+        "slugify": "^1.6.0"
+    }
 }

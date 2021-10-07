@@ -45,4 +45,18 @@ module.exports = class Model {
             },
         });
     }
+
+    static async users(Sequelize, sequelize) {
+        return sequelize.define("users", {
+            id: {
+                type: Sequelize.DataTypes.INTEGER,
+                autoIncrement: true,
+                primaryKey: true,
+            },
+            chat_id: {
+                type: Sequelize.DataTypes.INTEGER,
+                allowNull: false,
+            },
+        });
+    }
 };

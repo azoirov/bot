@@ -13,7 +13,7 @@ module.exports = async () => {
 
     db.categories = await Model.categories(Sequelize, sequelize);
     db.lessons = await Model.lesson(Sequelize, sequelize);
-
+    db.users = await Model.users(Sequelize, sequelize);
     // References
 
     await db.categories.hasMany(db.categories, {

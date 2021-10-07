@@ -4,9 +4,11 @@ const Path = require("path");
 const config = require("../../config");
 const CookieParser = require("cookie-parser");
 const db = require("../Model/postgres");
+const bot = require("../../main");
 
 async function server() {
     let postgres = await db();
+    await bot(postgres);
 
     // Create Server
     const app = Express();
@@ -43,4 +45,4 @@ async function server() {
     });
 }
 
-module.exports = server;
+server().then();
